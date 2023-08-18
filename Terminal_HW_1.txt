@@ -1,0 +1,62 @@
+1) pwd - команда для просмотра директории (посмотреть где находится пользователь)
+2) mkdir folder1 - создали папку с названием "folder1"
+3) cd folder1 - зашли в созданную папку "folder1"
+4) mkdir test1 test2 test3 - cоздали 3 разных папки в папке "folder1"
+5) cd test1 - зашли в папку "test1"
+6) touch > file1.txt > file2.txt > file3.txt > api1.json > api2.json - с помощью данной команды "cat >" создали 3 разных файла "txt" формата и 2 файла "json" формата в папке "test1"
+   Control + C (закрыли режим редактирования)
+7) mkdir InternalF1 InternalF2 Internal3 - создали 3 разных папки внутри папки "test1"
+8) ls - данная команда отобразит список содержимого в папке "test1" 
+   ls -la отобразит информацию о каждом элементе и все скрытые файлы в директории. В данном случае команда отобразит:
+   file1.txt file2.txt file3.txt
+   api1.json api2.json
+   InternalF1 InternalF2 InternalF3
+9) cat > file1.txt - с помощью данной команды открыли в режиме редактирования "file1.txt" файл в папке "test1" 
+10) cat > file1.txt 
+    Row1
+    Row2
+    Row3  - написали текст в текcтовый файл "file1.txt"в папке "test1"
+11) Control + C  - сохранили запись и вышли с текстового редактора файла
+12) cd .. - вышли из данной директории т.е. с папки "test1" в папку "folder1"
+13) mv test1/file1.txt test2/file1.txt 
+    mv test1/file2.txt test2/file2.txt - переместили "file1.txt", "file2.txt" с папки "test1" в папку "test2"
+14) cp test2/file1.txt test3/file1.txt
+    cp test2/file2.txt test3/file2.txt. - скопировали файлы "file1.txt" и "file2.txt" с папки "test2" в папку "test3"
+15) find file1.txt test3 -  с помощью команды "find" находим "file1.txt" в папке "test3" 
+
+16) tail Users/margarita/Documents/folder1/test3/file1.txt - вывели всю информацию с помощью этой команды
+
+17) cd test3 - вошли в папку с файлами текстового формата которые раннее были перемещены с эту папку 
+    head -2 file1.txt - данной командой выведем первые 2 начальных строк по умолчанию: Row1
+                                                                                       Row2
+    
+18) tail -2 file1.txt - данной командой выведем последние 2 строк по умолчанию : Row2
+                                                                                 Row3
+19) less file1.txt - данной командой выведем содержимое длинного текстового файла "file1.txt" (если такое длинное содержимое имеется в этом файле)
+20) date - c помощью данной командой в терминале отобразится текущая дата и время на ПС 
+
+Задание *
+
+1) curl "http://162.55.220.72:5005/get_method?name=(Marharita)&age=(26)". - отправили запрос на сервер и получили response from server: 
+[
+  "(Marharita)", 
+  "(26)"
+]
+
+
+2) vim script.sh 
+   В данном файлике прописываем команды 3, 4, 5, 6, 7, 8 и 13 т.е.
+cd folder1
+mkdir test1 test2 test3
+cd test1
+touch > file1.txt > file2.txt > file3.txt > api1.json > api2.json
+mkdir InternalF1 InternalF2 Internal3
+ls -la
+cd ..
+mv test1/file1.txt test2/file1.txt
+mv test1/file2.txt test2/file2.txt
+
+ESC :wq -сохранили и вышли
+   Далее запускаем команду с созданным файликом
+sh script.sh 
+            - все команды выполнились с помощью скрипта

@@ -1,0 +1,285 @@
+1) mkdir dir_1 - создали папку
+2) cd dir_1 - зашли в папку
+3) mkdir inner_dir_1 - создали новую папку внутри dir_1
+4) pwd - посмотрели в какой директории находимся 
+   /Users/margarita/dir_1
+5) touch tf_1.txt - внутри папки dir_1 создали пустой текстовый файл tf_1.txt
+6) cat > tf_2.txt 
+ 
+  the first 1
+  the second 2
+  the third 3
+
+  Control+C  
+           - создали новый файл с несколькими строками
+
+7) cd inner_dir_1 -зашли в папку 
+8) cat > tf_3.txt
+   
+   row 1
+   row 2
+   row 3 
+     
+   Control+c - создали новый файл внутри папки "inner_dir_1"
+9) cat >> tf_3.txt
+   
+   the second 2
+  
+   control+c 
+            - добавили новую строчку в текстовый файл
+10) cat >> tf_3.txt
+   
+   the sec 2
+  
+   control+c 
+            - добавили новую строчку в текстовый файл
+11) cd ..
+    cat >> tf_2.txt
+
+    the sec 3
+
+    Constol+c
+             - добавили строчку в текстовий файл в папке dir_1
+12) cd inner_dir_1 
+    cat >> tf_3.txt 
+   
+    the SeCoNd 2
+
+    Control+c 
+             - добавили нову строчку в файл
+13) cd ..
+    cat >> tf_2.txt
+   
+    the seConD 2
+
+    control+c 
+             - добавили новую строчку в файл в папке dir_1
+14) cat > tf_4.txt
+    
+    Row1
+    Row2
+    Row3
+    Row4
+    Row5
+    Row6
+    Row7
+    Row8
+    Row9
+    Row10
+    Row11
+    Row12
+    Row13
+    Row14
+    Row15
+  
+    Control+c 
+             - создали новый текстовый файлик с 15 строками в папке dir_1
+15) cat > fT_5.txt
+    
+    Name1
+    Name2
+    Name3
+    Name4
+    Name5
+    Name6
+    Name7
+    Name8
+    Name9
+    Name10
+    Name11
+    Name12
+    Name13
+   
+    conrtol_c
+             - создали текстовый файл в папке dir_1 
+
+
+    Итого в папке dir_1: 
+                        inner_dir_1
+                        tF_5.txt
+                        tf_1.txt
+                        tf_2.txt
+                        tf_4.txt
+
+    Внутри папки dir_1 находится папка inner_dir_1 внутри нее файл:
+                                                                   tf_3.txt
+
+16) ls -la - вывели список всех файлов (содержимого) в папке dir_1
+   
+    -tf_1.txt
+    -tf_2.txt 
+    -tf_4.txt
+    -tF_5.txt
+    inner_dir_1
+   
+17) cd inner_dir_1
+    cd .. 
+         - зашли чтобы выйти с папки inner_dir_1
+18) cat inner_dir_1/tf_3.txt 
+
+   row 1
+   row 2
+   row 3
+   the second 2
+   the sec 2
+   the SeCoNd 2 
+               - вывели содержимое файла tf_3.txt папки dir_1 в терминал 
+
+19) find . -type f -name "tf_4.txt" 
+    ./tf_4.txt   - отобразить путь к директории с данным указанным файлом
+20) cat /dev/null/ > tf_4.txt - удалили содержимое файла без удаления самого файла в папке dir_1
+21) find . -type f -name "tf*"
+
+./tf_1.txt
+./tf_2.txt
+./inner_dir_1/tf_3.txt
+./tf_4.txt
+          - отобразит все пути с директориями, у которых есть в названии текстового файла "tf"
+22) find . -type f -iname "tf*"
+ 
+./tf_1.txt
+./tf_2.txt
+./inner_dir_1/tf_3.txt
+./tF_5.txt
+./tf_4.txt
+          - отобразит все пути с директориями, у которых есть в названии текстового файла "tf" в любом регистре.
+23) grep -r sec ./
+
+.//tf_2.txt:the second 2
+.//tf_2.txt:the sec 3
+.//inner_dir_1/tf_3.txt:the second 2
+.//inner_dir_1/tf_3.txt:the sec 2
+                                 - вывели все строки в файлах где есть комбинация букв "sec" в текущей папке "dir_1"
+24) grep -ir sec ./ 
+
+.//tf_2.txt:the second 2
+.//tf_2.txt:the sec 3
+.//tf_2.txt:the seConD 2
+.//inner_dir_1/tf_3.txt:the second 2
+.//inner_dir_1/tf_3.txt:the sec 2
+.//inner_dir_1/tf_3.txt:the SeCoNd 2
+
+                 - вывели все строки в файлах где есть комбинация букв "sec" в любом регистре в текущей папке "dir_1"
+25) grep -rw "sec" ./ 
+
+.//tf_2.txt:the sec 3
+.//inner_dir_1/tf_3.txt:the sec 2
+
+                 - выведет все строки в файлах где есть только комбинация букв “sec” в текущей папке "dir_1"
+26) grep -ir "sec" ./
+
+.//tf_2.txt:the second 2
+.//tf_2.txt:the sec 3
+.//tf_2.txt:the seConD 2
+.//inner_dir_1/tf_3.txt:the second 2
+.//inner_dir_1/tf_3.txt:the sec 2
+.//inner_dir_1/tf_3.txt:the SeCoNd 2
+
+                 - выводит все строки  в файлах где есть только комбинация букв “sec” в текущей папке "dir_1" в любом регистре
+27) grep -r "second" ./ 
+
+.//tf_2.txt:the second 2
+.//inner_dir_1/tf_3.txt:the second 2
+
+                 - выводит все строки  в файлах где есть только комбинация букв “second” в текущей папке "dir_1"
+28) grep -ir "second" ./
+
+ .//tf_2.txt:the second 2
+.//tf_2.txt:the seConD 2
+.//inner_dir_1/tf_3.txt:the second 2
+.//inner_dir_1/tf_3.txt:the SeCoNd 2
+
+                 - выведет все строки  в файлах где есть только комбинация букв “second” в текущей папке "dir_1" в любом регистре
+29) grep -r "second" ./*  
+                 - выведет строки в файлах где есть комбинация букв “second” во всех папках ниже уровнем 
+30) find . -type f -name "*.txt" | grep second ./*
+
+grep: ./inner_dir_1: Is a directory
+./tf_2.txt:the second 2
+
+                 - выведет путь и название файла в строках которых есть комбинация букв
+“second” в текущей папке
+31) grep -rv "second"
+
+Binary file ./.DS_Store matches
+./tf_2.txt:the first 1
+./tf_2.txt:the third 3
+./tf_2.txt:the sec 3
+./tf_2.txt:the seConD 2
+./inner_dir_1/tf_3.txt:row1
+./inner_dir_1/tf_3.txt:row2
+./inner_dir_1/tf_3.txt:row3
+./inner_dir_1/tf_3.txt:the sec 2
+./inner_dir_1/tf_3.txt:the SeCoNd 2
+./tF_5.txt:Name1
+./tF_5.txt:Name2
+./tF_5.txt:Name3
+./tF_5.txt:Name4
+./tF_5.txt:Name5
+./tF_5.txt:Name6
+./tF_5.txt:Name7
+./tF_5.txt:Name8
+./tF_5.txt:Name9
+./tF_5.txt:Name10
+./tF_5.txt:Name11
+./tF_5.txt:Name12
+./tF_5.txt:Name13
+ 
+                 - выведет все строки во всех файлах где нет комбинации “second"
+32) find . -ipath -name"*.txt" | grep -rlv "second"
+
+./.DS_Store
+./tf_2.txt
+./inner_dir_1/tf_3.txt
+./tF_5.txt
+
+                 - выведет только название и путь к файлам где нет комбинации “second”
+33) tail -4 ./tF_5.txt
+
+Name10
+Name11
+Name12
+Name13
+           - выведет в терминал 4 последних строк "tF_5.txt" текстового файла из текущей директории "dir_1"
+34) head -4 ./tF_5.txt
+
+Name1
+Name2
+Name3
+Name4
+           - выведет в терминал 4 первые строки "tF_5.txt" текстового файла из текущей директории "dir_1"
+35) mkdir QA_36 | vim list1.txt
+
+Name 
+Surname
+Male
+
+ESC : wq
+        - создали папку и создали текстовый файл с содержимым командой в одну строку
+36) grep -rlw "sec" | xargs -n1 -I {} mv {} ./QA_36/ 
+                                                    - находясь в папке "dir_1" переместили в "QA_36" папку текстовые файлы у которых в содержимом есть слово “sec” с помощью команд в одну строку. Т.е. переместили "tf_3.txt" файл с "inner_dir_1" папки и "tf_2.txt" файл с "dir_1" в "QA_36" папку.
+-tf_2.txt
+-tf_3.txt
+                                                                   
+37) grep -rlw "sec" | xargs -n1 -I {} cp {} ./inner_dir_1/
+                                                         - находясь в папке "dir_1" скопировали в "inner_dir_1" папку текстовые файлы у которых в содержимом есть слово “sec” с помощью команд в одну строку. Т.е. скопировали "tf_3.txt", "tf_2.txt" файл с "QA_36" папки в "inner_dir_1" папку.
+-tf_2.txt
+-tf_3.txt
+
+38) grep -rw "sec" >> newfile1.tx 
+
+./inner_dir_1/tf_3.txt:the sec 2
+./inner_dir_1/tf_2.txt:the sec 3
+./QA_36/tf_3.txt:the sec 2
+./QA_36/tf_2.txt:the sec 3
+                                 - найдет все строки c “sec” во всех текстовых файлах, скопирует и вставить эти строки в один новый созданный текстовый файл "newfile1.txt" в данной директории "dir_1" с помощью команд в одну строку
+
+39) grep -rw "sec" | rm 
+                       - удалит текстовые файлы у которых в содержимом есть слово “sec” с помощью команды в одну строку
+
+40) echo "good job!"  
+                   -вывели "good job!!" в строку терминала
+
+
+
+
