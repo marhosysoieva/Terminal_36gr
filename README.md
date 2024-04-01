@@ -1,2 +1,1 @@
-# Terminal_36gr
-completed tasks
+# Terminal_36
